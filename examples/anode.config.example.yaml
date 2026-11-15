@@ -1,0 +1,30 @@
+# PROPOSED FORMAT ONLY. No config parser exists in this documentation starter.
+mode: standalone
+http:
+  bind: 127.0.0.1
+  port: 7840
+  authentication_required: true
+storage:
+  driver: sqlite
+  database_path: ./var/anode.sqlite3
+  artifact_driver: filesystem
+  artifact_root: ./var/artifacts
+# Cloud deployment must use TLS, configured identity, PostgreSQL and object storage.
+identity:
+  backend: not_selected
+dispatch:
+  enabled: true
+  protocol_versions: ["0.1"]
+  long_poll_seconds: 25
+  heartbeat_seconds: 20
+  unreachable_after_seconds: 90
+  lease_ttl_seconds: 120
+  lease_renew_seconds: 30
+project_defaults:
+  single_active_lead: true
+  review_required: true
+  automatic_merge: false
+gateway:
+  enabled: false
+registry:
+  public_publishing_enabled: false
